@@ -7,6 +7,7 @@
 
     stateConfig.$inject = ['$stateProvider'];
 
+    
     function stateConfig($stateProvider) {
         $stateProvider
         .state('developer', {

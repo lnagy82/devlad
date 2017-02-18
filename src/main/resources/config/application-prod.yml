@@ -22,7 +22,7 @@ spring:
         url: jdbc:postgresql://localhost:5432/devlad
         name:
         username: devlad
-        password:
+        password: devlad
     jpa:
         database-platform: hu.tsystems.devlad.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL

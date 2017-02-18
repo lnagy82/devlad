@@ -35,6 +35,18 @@ public class Skill implements Serializable {
     @Min(value = 0)
     @Column(name = "experience_points", nullable = false)
     private Integer experiencePoints;
+    
+    @ManyToOne
+    //@Column(name = "skill_set_id", nullable = false)
+    private SkillSet skillSet;
+    
+    public SkillSet getSkillSet() {
+		return skillSet;
+	}
+    
+    public void setSkillSet(SkillSet skillSet) {
+		this.skillSet = skillSet;
+	}
 
     public Long getId() {
         return id;

@@ -6,8 +6,9 @@ import hu.tsystems.devlad.domain.Accomplishment;
 import hu.tsystems.devlad.repository.AccomplishmentRepository;
 import hu.tsystems.devlad.web.rest.util.HeaderUtil;
 import hu.tsystems.devlad.web.rest.util.PaginationUtil;
+import hu.tsystems.devlad.web.rest.util.ResponseUtil;
 import io.swagger.annotations.ApiParam;
-import io.github.jhipster.web.util.ResponseUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;

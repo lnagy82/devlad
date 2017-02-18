@@ -8,7 +8,7 @@ import hu.tsystems.devlad.service.dto.DeveloperDTO;
 
 public class ResponseUtil {
 
-	public static ResponseEntity<DeveloperDTO> wrapOrNotFound(Optional<DeveloperDTO> ofNullable) {
+	public static <T extends Object> ResponseEntity<T> wrapOrNotFound(Optional<T> ofNullable) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "skills",
+            "otherEntityName": "skill",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "skillSet"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170218203552",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "skill_set",
+    "pagination": "pagination"
+}

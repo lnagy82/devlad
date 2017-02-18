@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="devladApp.accomplishment.detail.title">Accomplishment</span> {{vm.accomplishment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="devladApp.accomplishment.name">Name</span></dt>
+        <dd>
+            <span>{{vm.accomplishment.name}}</span>
+        </dd>
+        <dt><span data-translate="devladApp.accomplishment.description">Description</span></dt>
+        <dd>
+            <span>{{vm.accomplishment.description}}</span>
+        </dd>
+        <dt><span data-translate="devladApp.accomplishment.experiencePoints">Experience Points</span></dt>
+        <dd>
+            <span>{{vm.accomplishment.experiencePoints}}</span>
+        </dd>
+        <dt><span data-translate="devladApp.accomplishment.developer">Developer</span></dt>
+        <dd>
+            <a ui-sref="developer-detail({id:vm.accomplishment.developer.id})">{{vm.accomplishment.developer.identifier}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="accomplishment-detail.edit({id:vm.accomplishment.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -26,7 +26,6 @@ public class DeveloperMapperBean implements  DeveloperMapper{
 		ret.setId(developer.getId());
 		ret.setIdentifier(developer.getIdentifier());
 		ret.setLevel(developer.getLevel());
-		ret.setName(developer.getName());
 		return ret;
 	}
 
@@ -51,7 +50,6 @@ public class DeveloperMapperBean implements  DeveloperMapper{
 		ret.setId(developerDTO.getId());
 		ret.setIdentifier(developerDTO.getIdentifier());
 		ret.setLevel(developerDTO.getLevel());
-		ret.setName(developerDTO.getName());
 		return ret;
 	}
 

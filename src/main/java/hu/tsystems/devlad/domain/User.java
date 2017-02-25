@@ -75,6 +75,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @Column(name = "reset_date", nullable = true)
     private ZonedDateTime resetDate = null;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Developer developer;
 
     @JsonIgnore
     @ManyToMany
@@ -89,6 +92,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<PersistentToken> persistentTokens = new HashSet<>();
+    
+    public Developer getDeveloper() {
+		return developer;
+	}
+    
+    public void setDeveloper(Developer developer) {
+		this.developer = developer;
+	}
 
     public Long getId() {
         return id;

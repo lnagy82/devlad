@@ -19,7 +19,6 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="name"><span data-translate="devladApp.developer.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="identifier"><span data-translate="devladApp.developer.identifier">Identifier</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="description"><span data-translate="devladApp.developer.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="level"><span data-translate="devladApp.developer.level">Level</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -30,7 +29,6 @@
             <tbody>
                 <tr ng-repeat="developer in vm.developers track by developer.id">
                     <td><a ui-sref="developer-detail({id:developer.id})">{{developer.id}}</a></td>
-                    <td>{{developer.name}}</td>
                     <td>{{developer.identifier}}</td>
                     <td>{{developer.description}}</td>
                     <td>{{developer.level}}</td>

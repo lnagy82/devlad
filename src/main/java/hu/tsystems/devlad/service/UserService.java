@@ -1,6 +1,7 @@
 package hu.tsystems.devlad.service;
 
 import hu.tsystems.devlad.domain.Authority;
+import hu.tsystems.devlad.domain.Developer;
 import hu.tsystems.devlad.domain.User;
 import hu.tsystems.devlad.repository.AuthorityRepository;
 import hu.tsystems.devlad.repository.PersistentTokenRepository;
@@ -100,9 +101,19 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
+        newUser.setDeveloper(createDeveloperForUser(newUser));
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
+    }
+    
+    private Developer createDeveloperForUser(User user){
+    	Developer developer = new Developer();
+    	developer.setDescription("#");
+    	developer.setExperiencePoints(0);
+    	developer.setIdentifier(user.getLogin());
+    	developer.setLevel("D1");
+    	return developer;
     }
 
     public User createUser(ManagedUserVM managedUserVM) {
@@ -123,11 +134,12 @@ public class UserService {
             );
             user.setAuthorities(authorities);
         }
-        String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
+        String encryptedPassword = passwordEncoder.encode(managedUserVM.getLogin());
         user.setPassword(encryptedPassword);
         user.setResetKey(RandomUtil.generateResetKey());
         user.setResetDate(ZonedDateTime.now());
         user.setActivated(true);
+        user.setDeveloper(createDeveloperForUser(user));
         userRepository.save(user);
         log.debug("Created Information for User: {}", user);
         return user;

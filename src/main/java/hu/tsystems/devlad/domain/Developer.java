@@ -24,10 +24,6 @@ public class Developer implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @NotNull
     @Size(min = 3)
     @Column(name = "identifier", nullable = false)
     private String identifier;
@@ -48,19 +44,6 @@ public class Developer implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Developer name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getIdentifier() {
@@ -139,7 +122,6 @@ public class Developer implements Serializable {
     public String toString() {
         return "Developer{" +
             "id=" + id +
-            ", name='" + name + "'" +
             ", identifier='" + identifier + "'" +
             ", description='" + description + "'" +
             ", level='" + level + "'" +

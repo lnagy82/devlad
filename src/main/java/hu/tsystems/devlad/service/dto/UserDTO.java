@@ -3,6 +3,7 @@ package hu.tsystems.devlad.service.dto;
 import hu.tsystems.devlad.config.Constants;
 
 import hu.tsystems.devlad.domain.Authority;
+import hu.tsystems.devlad.domain.Developer;
 import hu.tsystems.devlad.domain.User;
 
 import org.hibernate.validator.constraints.Email;
@@ -36,6 +37,8 @@ public class UserDTO {
     private String langKey;
 
     private Set<String> authorities;
+    
+    private DeveloperDTO developer;
 
     public UserDTO() {
     }
@@ -44,11 +47,11 @@ public class UserDTO {
         this(user.getLogin(), user.getFirstName(), user.getLastName(),
             user.getEmail(), user.getActivated(), user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
-                .collect(Collectors.toSet()));
+                .collect(Collectors.toSet()), user.getDeveloper());
     }
 
     public UserDTO(String login, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities) {
+        String email, boolean activated, String langKey, Set<String> authorities, Developer developer) {
 
         this.login = login;
         this.firstName = firstName;
@@ -57,7 +60,24 @@ public class UserDTO {
         this.activated = activated;
         this.langKey = langKey;
         this.authorities = authorities;
+        
+        if(developer != null) {
+	        this.developer = new DeveloperDTO();
+	        this.developer.setId(developer.getId());
+	        this.developer.setDescription(developer.getDescription());
+	        this.developer.setExperiencePoints(developer.getExperiencePoints());
+	        this.developer.setIdentifier(developer.getIdentifier());
+	        this.developer.setLevel(developer.getLevel());
+        }
     }
+    
+    public DeveloperDTO getDeveloper() {
+		return developer;
+	}
+    
+    public void setDeveloper(DeveloperDTO developer) {
+		this.developer = developer;
+	}
 
     public String getLogin() {
         return login;

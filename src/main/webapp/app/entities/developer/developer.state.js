@@ -84,6 +84,38 @@
                 }]
             }
         })
+        .state('developer-profile', {
+            parent: 'developer',
+            url: '/developer',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'global.menu.account.profile'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/developer/developer-detail.html',
+                    controller: 'DeveloperDetailController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('developer');
+                    return $translate.refresh();
+                }],
+                entity: ['$stateParams', 'Developer', function($stateParams, Developer) {
+                    return null;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'developer',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
+        })
         .state('developer-detail.edit', {
             parent: 'developer-detail',
             url: '/detail/edit',

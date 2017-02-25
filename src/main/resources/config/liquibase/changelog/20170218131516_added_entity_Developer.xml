@@ -21,9 +21,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
 
             <column name="identifier" type="varchar(255)">
                 <constraints nullable="false" />
@@ -44,5 +41,15 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
+		<addColumn
+			tableName="jhi_user">
+        	<column name="developer_id"  type="bigint"/>
+    	</addColumn>
+    
+   		<addForeignKeyConstraint baseColumnNames="developer_id"
+                            baseTableName="jhi_user"
+                            constraintName="fk_user_developer_id"
+                            referencedColumnNames="id"
+                            referencedTableName="developer"/>
     </changeSet>
 </databaseChangeLog>

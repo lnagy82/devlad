@@ -39,9 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = DevladApp.class)
 public class DeveloperResourceIntTest {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
-
     private static final String DEFAULT_IDENTIFIER = "AAAAAAAAAA";
     private static final String UPDATED_IDENTIFIER = "BBBBBBBBBB";
 
@@ -94,8 +91,7 @@ public class DeveloperResourceIntTest {
      */
     public static Developer createEntity(EntityManager em) {
         Developer developer = new Developer()
-                .name(DEFAULT_NAME)
-                .identifier(DEFAULT_IDENTIFIER)
+                 .identifier(DEFAULT_IDENTIFIER)
                 .description(DEFAULT_DESCRIPTION)
                 .level(DEFAULT_LEVEL)
                 .experiencePoints(DEFAULT_EXPERIENCE_POINTS);
@@ -124,7 +120,6 @@ public class DeveloperResourceIntTest {
         List<Developer> developerList = developerRepository.findAll();
         assertThat(developerList).hasSize(databaseSizeBeforeCreate + 1);
         Developer testDeveloper = developerList.get(developerList.size() - 1);
-        assertThat(testDeveloper.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testDeveloper.getIdentifier()).isEqualTo(DEFAULT_IDENTIFIER);
         assertThat(testDeveloper.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testDeveloper.getLevel()).isEqualTo(DEFAULT_LEVEL);
@@ -156,8 +151,6 @@ public class DeveloperResourceIntTest {
     @Transactional
     public void checkNameIsRequired() throws Exception {
         int databaseSizeBeforeTest = developerRepository.findAll().size();
-        // set the field null
-        developer.setName(null);
 
         // Create the Developer, which fails.
         DeveloperDTO developerDTO = developerMapper.developerToDeveloperDTO(developer);
@@ -220,7 +213,6 @@ public class DeveloperResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(developer.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].identifier").value(hasItem(DEFAULT_IDENTIFIER.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL.toString())))
@@ -238,7 +230,6 @@ public class DeveloperResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(developer.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.identifier").value(DEFAULT_IDENTIFIER.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL.toString()))
@@ -263,7 +254,6 @@ public class DeveloperResourceIntTest {
         // Update the developer
         Developer updatedDeveloper = developerRepository.findOne(developer.getId());
         updatedDeveloper
-                .name(UPDATED_NAME)
                 .identifier(UPDATED_IDENTIFIER)
                 .description(UPDATED_DESCRIPTION)
                 .level(UPDATED_LEVEL)
@@ -279,7 +269,6 @@ public class DeveloperResourceIntTest {
         List<Developer> developerList = developerRepository.findAll();
         assertThat(developerList).hasSize(databaseSizeBeforeUpdate);
         Developer testDeveloper = developerList.get(developerList.size() - 1);
-        assertThat(testDeveloper.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testDeveloper.getIdentifier()).isEqualTo(UPDATED_IDENTIFIER);
         assertThat(testDeveloper.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testDeveloper.getLevel()).isEqualTo(UPDATED_LEVEL);

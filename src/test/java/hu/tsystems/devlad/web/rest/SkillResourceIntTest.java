@@ -292,8 +292,8 @@ public class SkillResourceIntTest {
         assertThat(skillList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
-//    @Test
-//    public void equalsVerifier() throws Exception {
-//        TestUtil.equalsVerifier(Skill.class);
-//    }
+    @Test
+    public void equalsVerifier() throws Exception {
+        TestUtil.equalsVerifier(Skill.class);
+    }
 }

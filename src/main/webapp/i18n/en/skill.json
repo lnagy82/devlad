@@ -17,7 +17,8 @@
             },
             "name": "Name",
             "description": "Description",
-            "experiencePoints": "Experience Points"
+            "experiencePoints": "Experience Points",
+            "developer": "Developer"
         }
     }
 }

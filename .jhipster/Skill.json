@@ -1,6 +1,14 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "developer",
+            "otherEntityName": "developer",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "skill"
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",

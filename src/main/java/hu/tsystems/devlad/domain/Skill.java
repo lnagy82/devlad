@@ -1,11 +1,14 @@
 package hu.tsystems.devlad.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -35,18 +38,11 @@ public class Skill implements Serializable {
     @Min(value = 0)
     @Column(name = "experience_points", nullable = false)
     private Integer experiencePoints;
-    
-    @ManyToOne
-    //@Column(name = "skill_set_id", nullable = false)
-    private SkillSet skillSet;
-    
-    public SkillSet getSkillSet() {
-		return skillSet;
-	}
-    
-    public void setSkillSet(SkillSet skillSet) {
-		this.skillSet = skillSet;
-	}
+
+    @ManyToMany(mappedBy = "skills")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Developer> developers = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -93,6 +89,31 @@ public class Skill implements Serializable {
 
     public void setExperiencePoints(Integer experiencePoints) {
         this.experiencePoints = experiencePoints;
+    }
+
+    public Set<Developer> getDevelopers() {
+        return developers;
+    }
+
+    public Skill developers(Set<Developer> developers) {
+        this.developers = developers;
+        return this;
+    }
+
+    public Skill addDeveloper(Developer developer) {
+        this.developers.add(developer);
+        developer.getSkills().add(this);
+        return this;
+    }
+
+    public Skill removeDeveloper(Developer developer) {
+        this.developers.remove(developer);
+        developer.getSkills().remove(this);
+        return this;
+    }
+
+    public void setDevelopers(Set<Developer> developers) {
+        this.developers = developers;
     }
 
     @Override

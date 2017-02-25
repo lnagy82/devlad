@@ -1,0 +1,24 @@
+{
+    "devladApp": {
+        "learnedSkill" : {
+            "home": {
+                "title": "Learned Skills",
+                "createLabel": "Create a new Learned Skill",
+                "createOrEditLabel": "Create or edit a Learned Skill"
+            },
+            "created": "A new Learned Skill is created with identifier {{ param }}",
+            "updated": "A Learned Skill is updated with identifier {{ param }}",
+            "deleted": "A Learned Skill is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Learned Skill {{ id }}?"
+            },
+            "detail": {
+                "title": "Learned Skill"
+            },
+            "learned": "Learned",
+            "signed": "Signed",
+            "developer": "Developer",
+            "skill": "Skill"
+        }
+    }
+}

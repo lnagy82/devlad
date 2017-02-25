@@ -5,14 +5,15 @@
         .module('devladApp')
         .controller('SkillDialogController', SkillDialogController);
 
-    SkillDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Skill'];
+    SkillDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Skill', 'Developer'];
 
-    function SkillDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Skill) {
+    function SkillDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Skill, Developer) {
         var vm = this;
 
         vm.skill = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.developers = Developer.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -32,6 +32,10 @@
             <column name="experience_points" type="integer">
                 <constraints nullable="false" />
             </column>
+            
+			<column name="skill_set_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>

@@ -5,9 +5,9 @@
         .module('devladApp')
         .controller('SkillDetailController', SkillDetailController);
 
-    SkillDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Skill', 'Developer'];
+    SkillDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Skill'];
 
-    function SkillDetailController($scope, $rootScope, $stateParams, previousState, entity, Skill, Developer) {
+    function SkillDetailController($scope, $rootScope, $stateParams, previousState, entity, Skill) {
         var vm = this;
 
         vm.skill = entity;

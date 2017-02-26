@@ -3,6 +3,7 @@ package hu.tsystems.devlad.web.rest;
 import hu.tsystems.devlad.DevladApp;
 
 import hu.tsystems.devlad.domain.Skill;
+import hu.tsystems.devlad.domain.SkillSet;
 import hu.tsystems.devlad.repository.SkillRepository;
 import hu.tsystems.devlad.web.rest.errors.ExceptionTranslator;
 
@@ -86,6 +87,11 @@ public class SkillResourceIntTest {
                 .name(DEFAULT_NAME)
                 .description(DEFAULT_DESCRIPTION)
                 .experiencePoints(DEFAULT_EXPERIENCE_POINTS);
+        // Add required entity
+        SkillSet skillSet = SkillSetResourceIntTest.createEntity(em);
+        em.persist(skillSet);
+        em.flush();
+        skill.setSkillSet(skillSet);
         return skill;
     }
 
@@ -292,8 +298,8 @@ public class SkillResourceIntTest {
         assertThat(skillList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
-//    @Test
-//    public void equalsVerifier() throws Exception {
-//        TestUtil.equalsVerifier(Skill.class);
-//    }
+    @Test
+    public void equalsVerifier() throws Exception {
+        TestUtil.equalsVerifier(Skill.class);
+    }
 }

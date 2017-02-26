@@ -1,14 +1,11 @@
 package hu.tsystems.devlad.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -38,18 +35,10 @@ public class Skill implements Serializable {
     @Min(value = 0)
     @Column(name = "experience_points", nullable = false)
     private Integer experiencePoints;
-    
-    @ManyToOne
-    private SkillSet skillSet;
-    
-    public SkillSet getSkillSet() {
-		return skillSet;
-	}
-    
-    public void setSkillSet(SkillSet skillSet) {
-		this.skillSet = skillSet;
-	}
 
+    @ManyToOne(optional = false)
+    @NotNull
+    private SkillSet skillSet;
 
     public Long getId() {
         return id;
@@ -96,6 +85,19 @@ public class Skill implements Serializable {
 
     public void setExperiencePoints(Integer experiencePoints) {
         this.experiencePoints = experiencePoints;
+    }
+
+    public SkillSet getSkillSet() {
+        return skillSet;
+    }
+
+    public Skill skillSet(SkillSet skillSet) {
+        this.skillSet = skillSet;
+        return this;
+    }
+
+    public void setSkillSet(SkillSet skillSet) {
+        this.skillSet = skillSet;
     }
 
     @Override

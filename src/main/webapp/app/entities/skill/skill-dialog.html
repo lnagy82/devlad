@@ -58,6 +58,18 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label data-translate="devladApp.skill.skillSet" for="field_skillSet">Skill Set</label>
+            <select class="form-control" id="field_skillSet" name="skillSet" ng-model="vm.skill.skillSet" ng-options="skillSet as skillSet.name for skillSet in vm.skillsets track by skillSet.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.skillSet.$invalid">
+            <p class="help-block"
+                ng-show="editForm.skillSet.$error.required" data-translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

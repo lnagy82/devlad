@@ -40,6 +40,10 @@ public class Skill implements Serializable {
     @NotNull
     private SkillSet skillSet;
 
+    @ManyToOne(optional = false)
+    @NotNull
+    private SkillSet skillSet;
+
     public Long getId() {
         return id;
     }
@@ -85,6 +89,19 @@ public class Skill implements Serializable {
 
     public void setExperiencePoints(Integer experiencePoints) {
         this.experiencePoints = experiencePoints;
+    }
+
+    public SkillSet getSkillSet() {
+        return skillSet;
+    }
+
+    public Skill skillSet(SkillSet skillSet) {
+        this.skillSet = skillSet;
+        return this;
+    }
+
+    public void setSkillSet(SkillSet skillSet) {
+        this.skillSet = skillSet;
     }
 
     public SkillSet getSkillSet() {

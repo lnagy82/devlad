@@ -18,7 +18,6 @@
             "name": "Name",
             "description": "Description",
             "experiencePoints": "Experience Points",
-            "skillSet": "Skill Set",
             "skillSet": "Skill Set"
         }
     }

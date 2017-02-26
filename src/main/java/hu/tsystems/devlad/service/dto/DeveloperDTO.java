@@ -2,6 +2,9 @@ package hu.tsystems.devlad.service.dto;
 
 
 import javax.validation.constraints.*;
+
+import hu.tsystems.devlad.domain.enumeration.Level;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -22,7 +25,7 @@ public class DeveloperDTO implements Serializable {
     private String description;
 
     @NotNull
-    private String level;
+    private Level level;
 
     private Integer experiencePoints;
 
@@ -54,11 +57,11 @@ public class DeveloperDTO implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getLevel() {
+    public Level getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(Level level) {
         this.level = level;
     }
     public Integer getExperiencePoints() {

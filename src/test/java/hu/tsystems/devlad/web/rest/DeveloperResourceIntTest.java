@@ -3,6 +3,7 @@ package hu.tsystems.devlad.web.rest;
 import hu.tsystems.devlad.DevladApp;
 
 import hu.tsystems.devlad.domain.Developer;
+import hu.tsystems.devlad.domain.enumeration.Level;
 import hu.tsystems.devlad.repository.DeveloperRepository;
 import hu.tsystems.devlad.service.dto.DeveloperDTO;
 import hu.tsystems.devlad.service.mapper.DeveloperMapper;
@@ -45,8 +46,8 @@ public class DeveloperResourceIntTest {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_LEVEL = "AAAAAAAAAA";
-    private static final String UPDATED_LEVEL = "BBBBBBBBBB";
+    private static final Level DEFAULT_LEVEL = Level.D1;
+    private static final Level UPDATED_LEVEL = Level.D2;
 
     private static final Integer DEFAULT_EXPERIENCE_POINTS = 1;
     private static final Integer UPDATED_EXPERIENCE_POINTS = 2;

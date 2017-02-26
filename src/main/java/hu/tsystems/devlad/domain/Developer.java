@@ -3,6 +3,8 @@ package hu.tsystems.devlad.domain;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import hu.tsystems.devlad.domain.enumeration.Level;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -32,8 +34,9 @@ public class Developer implements Serializable {
     private String description;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "level", nullable = false)
-    private String level;
+    private Level level;
 
     @Column(name = "experience_points")
     private Integer experiencePoints;
@@ -72,17 +75,17 @@ public class Developer implements Serializable {
         this.description = description;
     }
 
-    public String getLevel() {
+    public Level getLevel() {
         return level;
     }
 
-    public Developer level(String level) {
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+    
+    public Developer level(Level level) {
         this.level = level;
         return this;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
     }
 
     public Integer getExperiencePoints() {

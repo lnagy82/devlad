@@ -14,6 +14,7 @@
         vm.previousState = previousState.name;
         
         if(vm.developer == null){
+        	var a = Principal.identity();
         	vm.developer = Principal.identity().$$state.value.developer;
         }
 

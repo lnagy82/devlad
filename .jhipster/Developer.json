@@ -3,13 +3,6 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "name",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "identifier",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -24,10 +17,12 @@
         },
         {
             "fieldName": "level",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "Level",
+            "fieldValues": "D1,D2,D3,D4",
+             "fieldValidateRules": [
+                 "required"
+             ]
+
         },
         {
             "fieldName": "experiencePoints",

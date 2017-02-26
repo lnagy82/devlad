@@ -37,9 +37,13 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="devladApp.developer.level" for="field_level">Level</label>
-            <input type="text" class="form-control" name="level" id="field_level"
-                    ng-model="vm.developer.level"
-                    required/>
+            <select class="form-control" name="level" ng-model="vm.developer.level" id="field_level" required>
+              <option value="D1" data-translate="devladApp.Level.D1">D1</option>
+                <option value="D2" data-translate="devladApp.Level.D2">D2</option>
+                <option value="D3" data-translate="devladApp.Level.D3">D3</option>
+                <option value="D4" data-translate="devladApp.Level.D4">D4</option>
+            </select>
+
             <div ng-show="editForm.level.$invalid">
                 <p class="help-block"
                     ng-show="editForm.level.$error.required" data-translate="entity.validation.required">

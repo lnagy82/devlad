@@ -3,6 +3,7 @@ package hu.tsystems.devlad.service;
 import hu.tsystems.devlad.domain.Authority;
 import hu.tsystems.devlad.domain.Developer;
 import hu.tsystems.devlad.domain.User;
+import hu.tsystems.devlad.domain.enumeration.Level;
 import hu.tsystems.devlad.repository.AuthorityRepository;
 import hu.tsystems.devlad.repository.PersistentTokenRepository;
 import hu.tsystems.devlad.repository.UserRepository;
@@ -112,7 +113,7 @@ public class UserService {
     	developer.setDescription("#");
     	developer.setExperiencePoints(0);
     	developer.setIdentifier(user.getLogin());
-    	developer.setLevel("D1");
+    	developer.setLevel(Level.D1);
     	return developer;
     }
 

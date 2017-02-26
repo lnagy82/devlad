@@ -1,7 +1,7 @@
 body {
     background: url(../images/background-d3-top.jpg) center -200px no-repeat,url(../images/background-d3-repeat.jpg) center 2000px repeat-y #0a1b1e;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    /*color: #333;*/
 }
 
 /* ==========================================================================

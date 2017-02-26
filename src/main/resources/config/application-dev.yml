@@ -56,7 +56,7 @@ liquibase:
     contexts: dev
 
 server:
-    port: 8080
+    port: 58080
 
 # ===================================================================
 # JHipster specific properties
@@ -72,7 +72,7 @@ jhipster:
             key: cb7d353c605961d803ded9bde6d0e8a1e77977e1
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: devlad@localhost
-        baseUrl: http://127.0.0.1:8080
+        baseUrl: http://127.0.0.1:58080
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         graphite:

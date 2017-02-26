@@ -49,14 +49,14 @@ liquibase:
     contexts: prod
 
 server:
-    port: 8080
+    port: 58080
     compression:
         enabled: true
         mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
         min-response-size: 1024
 
 # ===================================================================
-# JHipster specific properties
+# JHipster specific properties na
 # ===================================================================
 
 jhipster:
@@ -72,7 +72,7 @@ jhipster:
             key: cb7d353c605961d803ded9bde6d0e8a1e77977e1
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: devlad@localhost
-        baseUrl: http://my-server-url-to-change # Modify according to your server's URL
+        baseUrl: http://localhost:58080 # Modify according to your server's URL
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         graphite:

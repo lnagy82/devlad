@@ -1,35 +1,66 @@
 
 <div>
-    <h2><span data-translate="devladApp.developer.detail.title">Developer</span> {{vm.developer.name}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="jh-entity-details">
-        <dt><span data-translate="devladApp.developer.identifier">Identifier</span></dt>
-        <dd>
-            <span>{{vm.developer.identifier}}</span>
-        </dd>
-        <dt><span data-translate="devladApp.developer.description">Description</span></dt>
-        <dd>
-            <span>{{vm.developer.description}}</span>
-        </dd>
-        <dt><span data-translate="devladApp.developer.level">Level</span></dt>
-        <dd>
-            <span data-translate="{{'devladApp.Level.' + vm.developer.level}}">{{vm.developer.level}}</span>
-        </dd>
-        <dt><span data-translate="devladApp.developer.experiencePoints">Experience Points</span></dt>
-        <dd>
-            <span>{{vm.developer.experiencePoints}}</span>
-        </dd>
-    </dl>
+	<h2>
+		<span data-translate="devladApp.developer.detail.title">Developer</span>
+		{{vm.developer.name}}
+	</h2>
+	<hr>
+	<jhi-alert-error></jhi-alert-error>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
 
-    <button type="button" ui-sref="developer-detail.edit({id:vm.developer.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
-    </button>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+				<img src="content/images/demon-hunter-male_1.jpg">
+			</div>
+
+			<dl class="jh-entity-details">
+				<dt>
+					<span data-translate="devladApp.developer.identifier">Identifier</span>
+				</dt>
+				<dd>
+					<span>{{vm.developer.identifier}}</span>
+				</dd>
+				<dt>
+					<span data-translate="devladApp.developer.description">Description</span>
+				</dt>
+				<dd>
+					<span>{{vm.developer.description}}</span>
+				</dd>
+				<dt>
+					<span data-translate="devladApp.developer.level">Level</span>
+				</dt>
+				<dd>
+					<span data-translate="{{'devladApp.Level.' + vm.developer.level}}">{{vm.developer.level}}</span>
+				</dd>
+				<dt>
+					<span data-translate="devladApp.developer.experiencePoints">Experience
+						Points</span>
+				</dt>
+				<dd>
+					<span>{{vm.developer.experiencePoints}}</span>
+				</dd>
+			</dl>
+		</div>
+
+		<br>
+
+		<div class="row">
+			<div class="col-xs-4">
+				<button type="submit" ui-sref="{{ vm.previousState }}"
+					class="btn btn-info">
+					<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
+						data-translate="entity.action.back"> Back</span>
+				</button>
+
+				<button type="button"
+					ui-sref="developer-detail.edit({id:vm.developer.id})"
+					class="btn btn-primary">
+					<span class="glyphicon glyphicon-pencil"></span> <span
+						class="hidden-sm-down" data-translate="entity.action.edit">
+						Edit</span>
+				</button>
+			</div>
+		</div>
+	</div>
 </div>

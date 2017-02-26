@@ -20,6 +20,12 @@
             "description": "Description",
             "level": "Level",
             "experiencePoints": "Experience Points"
+        },
+        "Level" : {
+            "D1": "D1",
+            "D2": "D2",
+            "D3": "D3",
+            "D4": "D4"
         }
     }
 }

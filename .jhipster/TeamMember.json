@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "team",
+            "otherEntityName": "team",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "developer",
+            "otherEntityName": "developer",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "identifier"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "assignment",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170303145101",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "team_member",
+    "pagination": "pagination"
+}

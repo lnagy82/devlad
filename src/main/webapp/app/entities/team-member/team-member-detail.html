@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="devladApp.teamMember.detail.title">Team Member</span> {{vm.teamMember.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="devladApp.teamMember.assignment">Assignment</span></dt>
+        <dd>
+            <span>{{vm.teamMember.assignment}}</span>
+        </dd>
+        <dt><span data-translate="devladApp.teamMember.team">Team</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.teamMember.team.id})">{{vm.teamMember.team.name}}</a>
+        </dd>
+        <dt><span data-translate="devladApp.teamMember.developer">Developer</span></dt>
+        <dd>
+            <a ui-sref="developer-detail({id:vm.teamMember.developer.id})">{{vm.teamMember.developer.identifier}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="team-member-detail.edit({id:vm.teamMember.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

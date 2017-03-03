@@ -12,6 +12,8 @@
                 "skillSet": "Skill Set",
                 "accomplishment": "Accomplishment",
                 "learnedSkill": "Learned Skill",
+                "team": "Team",
+                "teamMember": "Team Member",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

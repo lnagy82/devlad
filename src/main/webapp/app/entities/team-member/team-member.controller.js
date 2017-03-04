@@ -5,9 +5,9 @@
         .module('devladApp')
         .controller('TeamMemberController', TeamMemberController);
 
-    TeamMemberController.$inject = ['TeamMember', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    TeamMemberController.$inject = ['TeamMember', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams', '$state'];
 
-    function TeamMemberController(TeamMember, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function TeamMemberController(TeamMember, ParseLinks, AlertService, paginationConstants, pagingParams, $state) {
 
         var vm = this;
 

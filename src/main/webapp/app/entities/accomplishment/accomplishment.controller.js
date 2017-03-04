@@ -5,9 +5,9 @@
         .module('devladApp')
         .controller('AccomplishmentController', AccomplishmentController);
 
-    AccomplishmentController.$inject = ['Accomplishment', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    AccomplishmentController.$inject = ['Accomplishment', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams', '$state'];
 
-    function AccomplishmentController(Accomplishment, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function AccomplishmentController(Accomplishment, ParseLinks, AlertService, paginationConstants, pagingParams, $state) {
 
         var vm = this;
 

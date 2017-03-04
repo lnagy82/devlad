@@ -5,9 +5,9 @@
         .module('devladApp')
         .controller('SkillSetController', SkillSetController);
 
-    SkillSetController.$inject = ['SkillSet', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    SkillSetController.$inject = ['SkillSet', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams', '$state'];
 
-    function SkillSetController(SkillSet, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function SkillSetController(SkillSet, ParseLinks, AlertService, paginationConstants, pagingParams, $state) {
 
         var vm = this;
 

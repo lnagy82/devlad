@@ -5,9 +5,9 @@
         .module('devladApp')
         .controller('DeveloperController', DeveloperController);
 
-    DeveloperController.$inject = ['Developer', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    DeveloperController.$inject = ['Developer', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams', '$state'];
 
-    function DeveloperController(Developer, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function DeveloperController(Developer, ParseLinks, AlertService, paginationConstants, pagingParams, $state) {
 
         var vm = this;
 

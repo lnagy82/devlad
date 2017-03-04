@@ -13,8 +13,16 @@
         vm.teamMember = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.teams = Team.query();
-        vm.developers = Developer.query();
+        vm.teams = Team.query({
+            page: 0,
+            size: 100,
+            sort: 'asc'
+        }, null, null);
+        vm.developers = Developer.query({
+            page: 0,
+            size: 100,
+            sort: 'asc'
+        }, null, null);
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

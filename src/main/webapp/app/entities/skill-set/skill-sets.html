@@ -18,7 +18,7 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th jh-sort-by="name"><span data-translate="devladApp.skillSet.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="description"><span data-translate="devladApp.skillSet.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -26,7 +26,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="skillSet in vm.skillSets track by skillSet.id">
-                    <td><a ui-sref="skill-set-detail({id:skillSet.id})">{{skillSet.id}}</a></td>
+<!--                     <td><a ui-sref="skill-set-detail({id:skillSet.id})">{{skillSet.id}}</a></td> -->
                     <td>{{skillSet.name}}</td>
                     <td>{{skillSet.description}}</td>
                     <td class="text-right">

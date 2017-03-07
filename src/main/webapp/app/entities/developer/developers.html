@@ -19,9 +19,9 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <TH JH-SORT-BY="ID"><SPAN DATA-TRANSLATE="GLOBAL.FIELD.ID">ID</SPAN> <SPAN CLASS="GLYPHICON GLYPHICON-SORT"></SPAN></TH> -->
                     <th jh-sort-by="identifier"><span data-translate="devladApp.developer.identifier">Identifier</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="description"><span data-translate="devladApp.developer.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="description"><span data-translate="devladApp.developer.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th jh-sort-by="level"><span data-translate="devladApp.developer.level">Level</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="experiencePoints"><span data-translate="devladApp.developer.experiencePoints">Experience Points</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -29,9 +29,9 @@
             </thead>
             <tbody>
                 <tr ng-repeat="developer in vm.developers track by developer.id">
-                    <td><a ui-sref="developer-detail({id:developer.id})">{{developer.id}}</a></td>
+<!--                     <td><a ui-sref="developer-detail({id:developer.id})">{{developer.id}}</a></td> -->
                     <td>{{developer.identifier}}</td>
-                    <td>{{developer.description}}</td>
+<!--                     <td>{{developer.description}}</td> -->
                     <td data-translate="{{'devladApp.Level.' + developer.level}}">{{developer.level}}</td>
                     <td>{{developer.experiencePoints}}</td>
                     <td class="text-right">

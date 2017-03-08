@@ -45,6 +45,41 @@
                 </p>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="devladApp.learnedSkill.level" for="field_level">Level</label>
+            <select class="form-control" name="level" ng-model="vm.learnedSkill.level" id="field_level" required>
+                <option value="D1" data-translate="devladApp.Level.D1">D1</option>
+                <option value="D2" data-translate="devladApp.Level.D2">D2</option>
+                <option value="D3" data-translate="devladApp.Level.D3">D3</option>
+                <option value="D4" data-translate="devladApp.Level.D4">D4</option>
+            </select>
+            <div ng-show="editForm.level.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.level.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="devladApp.learnedSkill.exp" for="field_exp">Exp</label>
+            <input type="number" class="form-control" name="exp" id="field_exp"
+                    ng-model="vm.learnedSkill.exp"
+                    required min="0"/>
+            <div ng-show="editForm.exp.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.exp.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.exp.$error.min" data-translate="entity.validation.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.exp.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
 
         <div class="form-group">
             <label data-translate="devladApp.learnedSkill.developer" for="field_developer">Developer</label>

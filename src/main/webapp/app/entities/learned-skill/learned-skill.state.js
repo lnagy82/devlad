@@ -46,6 +46,7 @@
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('learnedSkill');
+                    $translatePartialLoader.addPart('level');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -68,6 +69,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('learnedSkill');
+                    $translatePartialLoader.addPart('level');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'LearnedSkill', function($stateParams, LearnedSkill) {
@@ -126,6 +128,8 @@
                             return {
                                 learned: null,
                                 signed: null,
+                                level: null,
+                                exp: null,
                                 id: null
                             };
                         }

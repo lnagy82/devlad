@@ -36,6 +36,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import hu.tsystems.devlad.domain.enumeration.Level;
 /**
  * Test class for the LearnedSkillResource REST controller.
  *
@@ -50,6 +51,12 @@ public class LearnedSkillResourceIntTest {
 
     private static final String DEFAULT_SIGNED = "AAAAAAAAAA";
     private static final String UPDATED_SIGNED = "BBBBBBBBBB";
+
+    private static final Level DEFAULT_LEVEL = Level.D1;
+    private static final Level UPDATED_LEVEL = Level.D2;
+
+    private static final Integer DEFAULT_EXP = 0;
+    private static final Integer UPDATED_EXP = 1;
 
     @Autowired
     private LearnedSkillRepository learnedSkillRepository;
@@ -92,7 +99,9 @@ public class LearnedSkillResourceIntTest {
     public static LearnedSkill createEntity(EntityManager em) {
         LearnedSkill learnedSkill = new LearnedSkill()
                 .learned(DEFAULT_LEARNED)
-                .signed(DEFAULT_SIGNED);
+                .signed(DEFAULT_SIGNED)
+                .level(DEFAULT_LEVEL)
+                .exp(DEFAULT_EXP);
         // Add required entity
         Developer developer = DeveloperResourceIntTest.createEntity(em);
         em.persist(developer);
@@ -129,6 +138,8 @@ public class LearnedSkillResourceIntTest {
         LearnedSkill testLearnedSkill = learnedSkillList.get(learnedSkillList.size() - 1);
         assertThat(testLearnedSkill.getLearned()).isEqualTo(DEFAULT_LEARNED);
         assertThat(testLearnedSkill.getSigned()).isEqualTo(DEFAULT_SIGNED);
+        assertThat(testLearnedSkill.getLevel()).isEqualTo(DEFAULT_LEVEL);
+        assertThat(testLearnedSkill.getExp()).isEqualTo(DEFAULT_EXP);
     }
 
     @Test
@@ -189,6 +200,42 @@ public class LearnedSkillResourceIntTest {
 
     @Test
     @Transactional
+    public void checkLevelIsRequired() throws Exception {
+        int databaseSizeBeforeTest = learnedSkillRepository.findAll().size();
+        // set the field null
+        learnedSkill.setLevel(null);
+
+        // Create the LearnedSkill, which fails.
+
+        restLearnedSkillMockMvc.perform(post("/api/learned-skills")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(learnedSkill)))
+            .andExpect(status().isBadRequest());
+
+        List<LearnedSkill> learnedSkillList = learnedSkillRepository.findAll();
+        assertThat(learnedSkillList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkExpIsRequired() throws Exception {
+        int databaseSizeBeforeTest = learnedSkillRepository.findAll().size();
+        // set the field null
+        learnedSkill.setExp(null);
+
+        // Create the LearnedSkill, which fails.
+
+        restLearnedSkillMockMvc.perform(post("/api/learned-skills")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(learnedSkill)))
+            .andExpect(status().isBadRequest());
+
+        List<LearnedSkill> learnedSkillList = learnedSkillRepository.findAll();
+        assertThat(learnedSkillList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllLearnedSkills() throws Exception {
         // Initialize the database
         learnedSkillRepository.saveAndFlush(learnedSkill);
@@ -199,7 +246,9 @@ public class LearnedSkillResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(learnedSkill.getId().intValue())))
             .andExpect(jsonPath("$.[*].learned").value(hasItem(sameInstant(DEFAULT_LEARNED))))
-            .andExpect(jsonPath("$.[*].signed").value(hasItem(DEFAULT_SIGNED.toString())));
+            .andExpect(jsonPath("$.[*].signed").value(hasItem(DEFAULT_SIGNED.toString())))
+            .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL.toString())))
+            .andExpect(jsonPath("$.[*].exp").value(hasItem(DEFAULT_EXP)));
     }
 
     @Test
@@ -214,7 +263,9 @@ public class LearnedSkillResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(learnedSkill.getId().intValue()))
             .andExpect(jsonPath("$.learned").value(sameInstant(DEFAULT_LEARNED)))
-            .andExpect(jsonPath("$.signed").value(DEFAULT_SIGNED.toString()));
+            .andExpect(jsonPath("$.signed").value(DEFAULT_SIGNED.toString()))
+            .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL.toString()))
+            .andExpect(jsonPath("$.exp").value(DEFAULT_EXP));
     }
 
     @Test
@@ -237,7 +288,9 @@ public class LearnedSkillResourceIntTest {
         LearnedSkill updatedLearnedSkill = learnedSkillRepository.findOne(learnedSkill.getId());
         updatedLearnedSkill
                 .learned(UPDATED_LEARNED)
-                .signed(UPDATED_SIGNED);
+                .signed(UPDATED_SIGNED)
+                .level(UPDATED_LEVEL)
+                .exp(UPDATED_EXP);
 
         restLearnedSkillMockMvc.perform(put("/api/learned-skills")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -250,6 +303,8 @@ public class LearnedSkillResourceIntTest {
         LearnedSkill testLearnedSkill = learnedSkillList.get(learnedSkillList.size() - 1);
         assertThat(testLearnedSkill.getLearned()).isEqualTo(UPDATED_LEARNED);
         assertThat(testLearnedSkill.getSigned()).isEqualTo(UPDATED_SIGNED);
+        assertThat(testLearnedSkill.getLevel()).isEqualTo(UPDATED_LEVEL);
+        assertThat(testLearnedSkill.getExp()).isEqualTo(UPDATED_EXP);
     }
 
     @Test
@@ -288,8 +343,8 @@ public class LearnedSkillResourceIntTest {
         assertThat(learnedSkillList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
-//    @Test
-//    public void equalsVerifier() throws Exception {
-//        TestUtil.equalsVerifier(LearnedSkill.class);
-//    }
+    @Test
+    public void equalsVerifier() throws Exception {
+        TestUtil.equalsVerifier(LearnedSkill.class);
+    }
 }

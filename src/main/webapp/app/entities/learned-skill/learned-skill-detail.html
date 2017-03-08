@@ -12,6 +12,14 @@
         <dd>
             <span>{{vm.learnedSkill.signed}}</span>
         </dd>
+        <dt><span data-translate="devladApp.learnedSkill.level">Level</span></dt>
+        <dd>
+            <span data-translate="{{'devladApp.Level.' + vm.learnedSkill.level}}">{{vm.learnedSkill.level}}</span>
+        </dd>
+        <dt><span data-translate="devladApp.learnedSkill.exp">Exp</span></dt>
+        <dd>
+            <span>{{vm.learnedSkill.exp}}</span>
+        </dd>
         <dt><span data-translate="devladApp.learnedSkill.developer">Developer</span></dt>
         <dd>
             <a ui-sref="developer-detail({id:vm.learnedSkill.developer.id})">{{vm.learnedSkill.developer.identifier}}</a>

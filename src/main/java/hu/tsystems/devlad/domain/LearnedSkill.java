@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
+import hu.tsystems.devlad.domain.enumeration.Level;
+
 /**
  * A LearnedSkill.
  */
@@ -31,6 +33,16 @@ public class LearnedSkill implements Serializable {
     @NotNull
     @Column(name = "signed", nullable = false)
     private String signed;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "level", nullable = false)
+    private Level level;
+
+    @NotNull
+    @Min(value = 0)
+    @Column(name = "exp", nullable = false)
+    private Integer exp;
 
     @ManyToOne(optional = false)
     @NotNull
@@ -72,6 +84,32 @@ public class LearnedSkill implements Serializable {
 
     public void setSigned(String signed) {
         this.signed = signed;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public LearnedSkill level(Level level) {
+        this.level = level;
+        return this;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
+    public Integer getExp() {
+        return exp;
+    }
+
+    public LearnedSkill exp(Integer exp) {
+        this.exp = exp;
+        return this;
+    }
+
+    public void setExp(Integer exp) {
+        this.exp = exp;
     }
 
     public Developer getDeveloper() {
@@ -126,6 +164,8 @@ public class LearnedSkill implements Serializable {
             "id=" + id +
             ", learned='" + learned + "'" +
             ", signed='" + signed + "'" +
+            ", level='" + level + "'" +
+            ", exp='" + exp + "'" +
             '}';
     }
 }

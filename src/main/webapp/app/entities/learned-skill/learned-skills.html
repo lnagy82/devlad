@@ -18,9 +18,11 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-<!--                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="learned"><span data-translate="devladApp.learnedSkill.learned">Learned</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="signed"><span data-translate="devladApp.learnedSkill.signed">Signed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="level"><span data-translate="devladApp.learnedSkill.level">Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="exp"><span data-translate="devladApp.learnedSkill.exp">Exp</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="developer.identifier"><span data-translate="devladApp.learnedSkill.developer">Developer</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="skill.name"><span data-translate="devladApp.learnedSkill.skill">Skill</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -28,9 +30,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="learnedSkill in vm.learnedSkills track by learnedSkill.id">
-<!--                     <td><a ui-sref="learned-skill-detail({id:learnedSkill.id})">{{learnedSkill.id}}</a></td> -->
+                    <td><a ui-sref="learned-skill-detail({id:learnedSkill.id})">{{learnedSkill.id}}</a></td>
                     <td>{{learnedSkill.learned | date:'medium'}}</td>
                     <td>{{learnedSkill.signed}}</td>
+                    <td data-translate="{{'devladApp.Level.' + learnedSkill.level}}">{{learnedSkill.level}}</td>
+                    <td>{{learnedSkill.exp}}</td>
                     <td>
                         <a ui-sref="developer-detail({id:learnedSkill.developer.id})">{{learnedSkill.developer.identifier}}</a>
                     </td>

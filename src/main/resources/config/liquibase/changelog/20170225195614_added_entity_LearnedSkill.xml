@@ -29,6 +29,14 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="level" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="exp" type="integer">
+                <constraints nullable="false" />
+            </column>
+
             <column name="developer_id" type="bigint">
                 <constraints nullable="false" />
             </column>

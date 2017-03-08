@@ -17,6 +17,8 @@
             },
             "learned": "Learned",
             "signed": "Signed",
+            "level": "Level",
+            "exp": "Exp",
             "developer": "Developer",
             "skill": "Skill"
         }

@@ -29,10 +29,6 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="experience_points" type="integer">
-                <constraints nullable="false" />
-            </column>
-
             <column name="base_value" type="integer">
                 <constraints nullable="false" />
             </column>

@@ -17,7 +17,6 @@
             },
             "name": "Name",
             "description": "Description",
-            "experiencePoints": "Experience Points",
             "baseValue": "Base Value",
             "skillSet": "Skill Set"
         }

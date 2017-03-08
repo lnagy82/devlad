@@ -126,7 +126,6 @@
                             return {
                                 name: null,
                                 description: null,
-                                experiencePoints: null,
                                 baseValue: null,
                                 id: null
                             };

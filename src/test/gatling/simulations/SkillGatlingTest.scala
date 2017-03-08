@@ -67,7 +67,7 @@ class SkillGatlingTest extends Simulation {
             .exec(http("Create new skill")
             .post("/api/skills")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "description":"SAMPLE_TEXT", "experiencePoints":"0", "baseValue":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "description":"SAMPLE_TEXT", "baseValue":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_skill_url"))).exitHereIfFailed
             .pause(10)

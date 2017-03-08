@@ -33,11 +33,6 @@ public class Skill implements Serializable {
 
     @NotNull
     @Min(value = 0)
-    @Column(name = "experience_points", nullable = false)
-    private Integer experiencePoints;
-
-    @NotNull
-    @Min(value = 0)
     @Column(name = "base_value", nullable = false)
     private Integer baseValue;
 
@@ -77,19 +72,6 @@ public class Skill implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Integer getExperiencePoints() {
-        return experiencePoints;
-    }
-
-    public Skill experiencePoints(Integer experiencePoints) {
-        this.experiencePoints = experiencePoints;
-        return this;
-    }
-
-    public void setExperiencePoints(Integer experiencePoints) {
-        this.experiencePoints = experiencePoints;
     }
 
     public Integer getBaseValue() {
@@ -144,7 +126,6 @@ public class Skill implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", description='" + description + "'" +
-            ", experiencePoints='" + experiencePoints + "'" +
             ", baseValue='" + baseValue + "'" +
             '}';
     }

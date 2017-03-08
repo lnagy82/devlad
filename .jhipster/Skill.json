@@ -34,6 +34,15 @@
                 "min"
             ],
             "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "baseValue",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
         }
     ],
     "changelogDate": "20170218203304",

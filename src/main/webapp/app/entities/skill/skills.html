@@ -18,20 +18,22 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-<!--                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="devladApp.skill.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-<!--                     <th jh-sort-by="description"><span data-translate="devladApp.skill.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th> -->
-<!--                     <th jh-sort-by="experiencePoints"><span data-translate="devladApp.skill.experiencePoints">Experience Points</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="description"><span data-translate="devladApp.skill.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="experiencePoints"><span data-translate="devladApp.skill.experiencePoints">Experience Points</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="baseValue"><span data-translate="devladApp.skill.baseValue">Base Value</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="skillSet.name"><span data-translate="devladApp.skill.skillSet">Skill Set</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="skill in vm.skills track by skill.id">
-<!--                     <td><a ui-sref="skill-detail({id:skill.id})">{{skill.id}}</a></td> -->
+                    <td><a ui-sref="skill-detail({id:skill.id})">{{skill.id}}</a></td>
                     <td>{{skill.name}}</td>
-<!--                     <td>{{skill.description}}</td> -->
-<!--                     <td>{{skill.experiencePoints}}</td> -->
+                    <td>{{skill.description}}</td>
+                    <td>{{skill.experiencePoints}}</td>
+                    <td>{{skill.baseValue}}</td>
                     <td>
                         <a ui-sref="skill-set-detail({id:skill.skillSet.id})">{{skill.skillSet.name}}</a>
                     </td>

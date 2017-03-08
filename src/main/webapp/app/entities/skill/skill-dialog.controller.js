@@ -13,11 +13,7 @@
         vm.skill = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.skillsets = SkillSet.query({
-            page: 0,
-            size: 100,
-            sort: 'asc'
-        }, null, null);
+        vm.skillsets = SkillSet.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

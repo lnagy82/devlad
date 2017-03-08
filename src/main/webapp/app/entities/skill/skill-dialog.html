@@ -57,7 +57,28 @@
                 </p>
             </div>
         </div>
-       <div class="form-group">
+        <div class="form-group">
+            <label class="control-label" data-translate="devladApp.skill.baseValue" for="field_baseValue">Base Value</label>
+            <input type="number" class="form-control" name="baseValue" id="field_baseValue"
+                    ng-model="vm.skill.baseValue"
+                    required min="0"/>
+            <div ng-show="editForm.baseValue.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.baseValue.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.baseValue.$error.min" data-translate="entity.validation.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.baseValue.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label data-translate="devladApp.skill.skillSet" for="field_skillSet">Skill Set</label>
             <select class="form-control" id="field_skillSet" name="skillSet" ng-model="vm.skill.skillSet" ng-options="skillSet as skillSet.name for skillSet in vm.skillsets track by skillSet.id" required>
                 <option value=""></option>

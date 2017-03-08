@@ -36,6 +36,11 @@ public class Skill implements Serializable {
     @Column(name = "experience_points", nullable = false)
     private Integer experiencePoints;
 
+    @NotNull
+    @Min(value = 0)
+    @Column(name = "base_value", nullable = false)
+    private Integer baseValue;
+
     @ManyToOne(optional = false)
     @NotNull
     private SkillSet skillSet;
@@ -87,6 +92,19 @@ public class Skill implements Serializable {
         this.experiencePoints = experiencePoints;
     }
 
+    public Integer getBaseValue() {
+        return baseValue;
+    }
+
+    public Skill baseValue(Integer baseValue) {
+        this.baseValue = baseValue;
+        return this;
+    }
+
+    public void setBaseValue(Integer baseValue) {
+        this.baseValue = baseValue;
+    }
+
     public SkillSet getSkillSet() {
         return skillSet;
     }
@@ -100,7 +118,6 @@ public class Skill implements Serializable {
         this.skillSet = skillSet;
     }
 
- 
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -128,6 +145,7 @@ public class Skill implements Serializable {
             ", name='" + name + "'" +
             ", description='" + description + "'" +
             ", experiencePoints='" + experiencePoints + "'" +
+            ", baseValue='" + baseValue + "'" +
             '}';
     }
 }

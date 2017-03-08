@@ -33,6 +33,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="base_value" type="integer">
+                <constraints nullable="false" />
+            </column>
+
             <column name="skill_set_id" type="bigint">
                 <constraints nullable="false" />
             </column>

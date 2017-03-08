@@ -4,7 +4,6 @@ import hu.tsystems.devlad.DevladApp;
 
 import hu.tsystems.devlad.domain.Skill;
 import hu.tsystems.devlad.domain.SkillSet;
-import hu.tsystems.devlad.domain.SkillSet;
 import hu.tsystems.devlad.repository.SkillRepository;
 import hu.tsystems.devlad.web.rest.errors.ExceptionTranslator;
 
@@ -48,6 +47,9 @@ public class SkillResourceIntTest {
     private static final Integer DEFAULT_EXPERIENCE_POINTS = 0;
     private static final Integer UPDATED_EXPERIENCE_POINTS = 1;
 
+    private static final Integer DEFAULT_BASE_VALUE = 0;
+    private static final Integer UPDATED_BASE_VALUE = 1;
+
     @Autowired
     private SkillRepository skillRepository;
 
@@ -87,14 +89,13 @@ public class SkillResourceIntTest {
         Skill skill = new Skill()
                 .name(DEFAULT_NAME)
                 .description(DEFAULT_DESCRIPTION)
-                .experiencePoints(DEFAULT_EXPERIENCE_POINTS);
+                .experiencePoints(DEFAULT_EXPERIENCE_POINTS)
+                .baseValue(DEFAULT_BASE_VALUE);
         // Add required entity
         SkillSet skillSet = SkillSetResourceIntTest.createEntity(em);
         em.persist(skillSet);
         em.flush();
         skill.setSkillSet(skillSet);
-        em.persist(skillSet);
-        em.flush();
         return skill;
     }
 
@@ -122,6 +123,7 @@ public class SkillResourceIntTest {
         assertThat(testSkill.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testSkill.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testSkill.getExperiencePoints()).isEqualTo(DEFAULT_EXPERIENCE_POINTS);
+        assertThat(testSkill.getBaseValue()).isEqualTo(DEFAULT_BASE_VALUE);
     }
 
     @Test
@@ -200,6 +202,24 @@ public class SkillResourceIntTest {
 
     @Test
     @Transactional
+    public void checkBaseValueIsRequired() throws Exception {
+        int databaseSizeBeforeTest = skillRepository.findAll().size();
+        // set the field null
+        skill.setBaseValue(null);
+
+        // Create the Skill, which fails.
+
+        restSkillMockMvc.perform(post("/api/skills")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(skill)))
+            .andExpect(status().isBadRequest());
+
+        List<Skill> skillList = skillRepository.findAll();
+        assertThat(skillList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllSkills() throws Exception {
         // Initialize the database
         skillRepository.saveAndFlush(skill);
@@ -211,7 +231,8 @@ public class SkillResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(skill.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].experiencePoints").value(hasItem(DEFAULT_EXPERIENCE_POINTS)));
+            .andExpect(jsonPath("$.[*].experiencePoints").value(hasItem(DEFAULT_EXPERIENCE_POINTS)))
+            .andExpect(jsonPath("$.[*].baseValue").value(hasItem(DEFAULT_BASE_VALUE)));
     }
 
     @Test
@@ -227,7 +248,8 @@ public class SkillResourceIntTest {
             .andExpect(jsonPath("$.id").value(skill.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.experiencePoints").value(DEFAULT_EXPERIENCE_POINTS));
+            .andExpect(jsonPath("$.experiencePoints").value(DEFAULT_EXPERIENCE_POINTS))
+            .andExpect(jsonPath("$.baseValue").value(DEFAULT_BASE_VALUE));
     }
 
     @Test
@@ -250,7 +272,8 @@ public class SkillResourceIntTest {
         updatedSkill
                 .name(UPDATED_NAME)
                 .description(UPDATED_DESCRIPTION)
-                .experiencePoints(UPDATED_EXPERIENCE_POINTS);
+                .experiencePoints(UPDATED_EXPERIENCE_POINTS)
+                .baseValue(UPDATED_BASE_VALUE);
 
         restSkillMockMvc.perform(put("/api/skills")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -264,6 +287,7 @@ public class SkillResourceIntTest {
         assertThat(testSkill.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testSkill.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testSkill.getExperiencePoints()).isEqualTo(UPDATED_EXPERIENCE_POINTS);
+        assertThat(testSkill.getBaseValue()).isEqualTo(UPDATED_BASE_VALUE);
     }
 
     @Test
@@ -301,8 +325,8 @@ public class SkillResourceIntTest {
         assertThat(skillList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
-//    @Test
-//    public void equalsVerifier() throws Exception {
-//        TestUtil.equalsVerifier(Skill.class);
-//    }
+    @Test
+    public void equalsVerifier() throws Exception {
+        TestUtil.equalsVerifier(Skill.class);
+    }
 }

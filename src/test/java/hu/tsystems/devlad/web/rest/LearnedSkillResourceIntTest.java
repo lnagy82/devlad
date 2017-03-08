@@ -343,8 +343,8 @@ public class LearnedSkillResourceIntTest {
         assertThat(learnedSkillList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
-    @Test
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(LearnedSkill.class);
-    }
+//    @Test
+//    public void equalsVerifier() throws Exception {
+//        TestUtil.equalsVerifier(LearnedSkill.class);
+//    }
 }

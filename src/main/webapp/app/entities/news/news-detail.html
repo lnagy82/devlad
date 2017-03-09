@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="devladApp.news.detail.title">News</span> {{vm.news.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="devladApp.news.created">Created</span></dt>
+        <dd>
+            <span>{{vm.news.created | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="devladApp.news.title">Title</span></dt>
+        <dd>
+            <span>{{vm.news.title}}</span>
+        </dd>
+        <dt><span data-translate="devladApp.news.content">Content</span></dt>
+        <dd>
+            <span>{{vm.news.content}}</span>
+        </dd>
+        <dt><span data-translate="devladApp.news.author">Author</span></dt>
+        <dd>
+            <span>{{vm.news.author}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="news-detail.edit({id:vm.news.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

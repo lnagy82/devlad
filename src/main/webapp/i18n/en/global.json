@@ -15,6 +15,7 @@
                 "learnedSkill": "Learned Skill",
                 "team": "Team",
                 "teamMember": "Team Member",
+                "news": "News",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

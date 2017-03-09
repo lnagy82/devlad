@@ -312,8 +312,8 @@ public class NewsResourceIntTest {
         assertThat(newsList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
-    @Test
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(News.class);
-    }
+//    @Test
+//    public void equalsVerifier() throws Exception {
+//        TestUtil.equalsVerifier(News.class);
+//    }
 }

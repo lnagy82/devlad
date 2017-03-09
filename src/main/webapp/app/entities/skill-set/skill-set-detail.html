@@ -20,7 +20,7 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button" ui-sref="skill-set-detail.edit({id:vm.skillSet.id})" class="btn btn-primary">
+    <button type="button" ui-sref="skill-set-detail.edit({id:vm.skillSet.id})" class="btn btn-primary" has-authority="ROLE_ADMIN">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
     </button>

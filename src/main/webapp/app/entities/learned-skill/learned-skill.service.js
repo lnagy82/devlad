@@ -25,3 +25,22 @@
         });
     }
 })();
+
+(function() {
+    'use strict';
+    angular
+        .module('devladApp')
+        .factory('LearnedSkillbyDeveloper', LearnedSkillbyDeveloper);
+
+    LearnedSkillbyDeveloper.$inject = ['$resource', 'DateUtils'];
+
+    function LearnedSkillbyDeveloper ($resource, DateUtils) {
+        var resourceUrl =  'api/learned-skills/developer/:developerId';
+
+        return $resource(resourceUrl, {}, {
+            'query': { method: 'GET', isArray: true}
+        });
+    }
+})();
+
+

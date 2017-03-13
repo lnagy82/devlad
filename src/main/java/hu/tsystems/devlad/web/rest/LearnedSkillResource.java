@@ -97,6 +97,24 @@ public class LearnedSkillResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/learned-skills");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+    
+    /**
+     * GET  /learned-skills : get all the learnedSkills.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of learnedSkills in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping("/learned-skills/developer/{developerId}")
+    @Timed
+    public ResponseEntity<List<LearnedSkill>> getLearnedSkillsByDeveloper(@ApiParam Pageable pageable, @PathVariable Long developerId)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of LearnedSkills");
+        Page<LearnedSkill> page = learnedSkillService.findAllByDeveloper(pageable, developerId);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/learned-skills");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
 
     /**
      * GET  /learned-skills/:id : get the "id" learnedSkill.

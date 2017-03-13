@@ -50,6 +50,19 @@ public class LearnedSkillService {
         Page<LearnedSkill> result = learnedSkillRepository.findAll(pageable);
         return result;
     }
+    
+    /**
+     *  Get all the learnedSkills.
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<LearnedSkill> findAllByDeveloper(Pageable pageable, Long developerId) {
+        log.debug("Request to get all LearnedSkills");
+        Page<LearnedSkill> result = learnedSkillRepository.findAllByDeveloperId(pageable, developerId);
+        return result;
+    }
 
     /**
      *  Get one learnedSkill by id.

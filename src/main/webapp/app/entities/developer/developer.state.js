@@ -54,7 +54,7 @@
         })
         .state('developer-detail', {
             parent: 'developer',
-            url: '/developer/{id}',
+            url: '/developer/{id}?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'devladApp.developer.detail.title'

@@ -13,7 +13,12 @@ import java.util.Objects;
  */
 public class DeveloperDTO implements Serializable {
 
-    private Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2021641732814945657L;
+
+	private Long id;
 
     @NotNull
     private String name;

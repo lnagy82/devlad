@@ -3,6 +3,7 @@ package hu.tsystems.devlad.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import hu.tsystems.devlad.domain.LearnedSkill;
 import hu.tsystems.devlad.service.LearnedSkillService;
+import hu.tsystems.devlad.service.dto.LearnedSkillDTO;
 import hu.tsystems.devlad.web.rest.util.HeaderUtil;
 import hu.tsystems.devlad.web.rest.util.PaginationUtil;
 import hu.tsystems.devlad.web.rest.util.ResponseUtil;
@@ -107,10 +108,10 @@ public class LearnedSkillResource {
      */
     @GetMapping("/learned-skills/developer/{developerId}")
     @Timed
-    public ResponseEntity<List<LearnedSkill>> getLearnedSkillsByDeveloper(@ApiParam Pageable pageable, @PathVariable Long developerId)
+    public ResponseEntity<List<LearnedSkillDTO>> getLearnedSkillsByDeveloper(@ApiParam Pageable pageable, @PathVariable Long developerId)
         throws URISyntaxException {
         log.debug("REST request to get a page of LearnedSkills");
-        Page<LearnedSkill> page = learnedSkillService.findAllByDeveloper(pageable, developerId);
+        Page<LearnedSkillDTO> page = learnedSkillService.findAllByDeveloper(pageable, developerId);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/learned-skills");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

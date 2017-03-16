@@ -49,19 +49,19 @@
 					<tbody>
 						<tr
 							ng-repeat="learnedSkill in vm.learnedSkills track by learnedSkill.id">
-							<td><a ui-sref="skill-detail({id:learnedSkill.skill.id})">{{learnedSkill.skill.name}}</a></td>
-							<td data-translate="{{'devladApp.Level.' + learnedSkill.level}}">{{learnedSkill.level}}</td>
-							<td>{{learnedSkill.exp}}</td>
-							<td class="text-right">
-								<div class="btn-group flex-btn-group-container">
-									<button type="submit"
-										ui-sref="learned-skill-detail({id:learnedSkill.id})"
-										class="btn btn-info btn-sm">
-										<span class="glyphicon glyphicon-eye-open"></span> <span
-											class="hidden-sm-down" data-translate="entity.action.view"></span>
-									</button>
-								</div>
-							</td>
+							<td><a ui-sref="skill-detail({id:learnedSkill.id})">{{learnedSkill.name}}</a></td>
+							<td>{{learnedSkill.levels}}</td>
+							<td>{{learnedSkill.xp}}</td>
+<!-- 							<td class="text-right"> -->
+<!-- 								<div class="btn-group flex-btn-group-container"> -->
+<!-- 									<button type="submit" -->
+<!-- 										ui-sref="skill-detail({id:learnedSkill.id})" -->
+<!-- 										class="btn btn-info btn-sm"> -->
+<!-- 										<span class="glyphicon glyphicon-eye-open"></span> <span -->
+<!-- 											class="hidden-sm-down" data-translate="entity.action.view"></span> -->
+<!-- 									</button> -->
+<!-- 								</div> -->
+<!-- 							</td> -->
 						</tr>
 					</tbody>
 				</table>

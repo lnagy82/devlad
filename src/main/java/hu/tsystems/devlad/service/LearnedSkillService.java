@@ -2,6 +2,9 @@ package hu.tsystems.devlad.service;
 
 import hu.tsystems.devlad.domain.LearnedSkill;
 import hu.tsystems.devlad.repository.LearnedSkillRepository;
+import hu.tsystems.devlad.repository.LearnedSkillRepositoryCustom;
+import hu.tsystems.devlad.service.dto.LearnedSkillDTO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -10,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * Service Implementation for managing LearnedSkill.
@@ -21,6 +26,9 @@ public class LearnedSkillService {
     private final Logger log = LoggerFactory.getLogger(LearnedSkillService.class);
     
     private final LearnedSkillRepository learnedSkillRepository;
+    
+    @Inject
+    private LearnedSkillRepositoryCustom learnedSkillRepositoryCustom;
 
     public LearnedSkillService(LearnedSkillRepository learnedSkillRepository) {
         this.learnedSkillRepository = learnedSkillRepository;
@@ -58,9 +66,9 @@ public class LearnedSkillService {
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<LearnedSkill> findAllByDeveloper(Pageable pageable, Long developerId) {
+    public Page<LearnedSkillDTO> findAllByDeveloper(Pageable pageable, Long developerId) {
         log.debug("Request to get all LearnedSkills");
-        Page<LearnedSkill> result = learnedSkillRepository.findAllByDeveloperId(pageable, developerId);
+        Page<LearnedSkillDTO> result = learnedSkillRepositoryCustom.findAllByDeveloperId(pageable, developerId);
         return result;
     }
 

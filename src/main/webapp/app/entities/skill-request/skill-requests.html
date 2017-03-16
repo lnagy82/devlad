@@ -18,20 +18,20 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th jh-sort-by="created"><span data-translate="devladApp.skillRequest.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="requestor"><span data-translate="devladApp.skillRequest.requestor">Requestor</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="description"><span data-translate="devladApp.skillRequest.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="description"><span data-translate="devladApp.skillRequest.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th jh-sort-by="status"><span data-translate="devladApp.skillRequest.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="skillRequest in vm.skillRequests track by skillRequest.id">
-                    <td><a ui-sref="skill-request-detail({id:skillRequest.id})">{{skillRequest.id}}</a></td>
+<!--                     <td><a ui-sref="skill-request-detail({id:skillRequest.id})">{{skillRequest.id}}</a></td> -->
                     <td>{{skillRequest.created | date:'medium'}}</td>
                     <td>{{skillRequest.requestor}}</td>
-                    <td>{{skillRequest.description}}</td>
+<!--                     <td>{{skillRequest.description}}</td> -->
                     <td data-translate="{{'devladApp.SkillRequestStatus.' + skillRequest.status}}">{{skillRequest.status}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
@@ -47,7 +47,7 @@
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
                             </button>
-                            <button type="submit"
+                            <button type="submit" has-authority="ROLE_ADMIN"
                                     ui-sref="skill-request.delete({id:skillRequest.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>

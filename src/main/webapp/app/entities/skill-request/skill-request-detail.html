@@ -12,9 +12,12 @@
         <dd>
             <span>{{vm.skillRequest.requestor}}</span>
         </dd>
-        <dt><span data-translate="devladApp.skillRequest.description">Description</span></dt>
+        <dt><span data-translate="devladApp.skillRequest.description">Description</span>
+        </dt>
         <dd>
-            <span>{{vm.skillRequest.description}}</span>
+<!--             <span>{{vm.skillRequest.description}}</span> -->
+		<textarea rows="4" cols="10" class="form-control" name="description" id="field_description" readonly="readonly"
+                    >{{vm.skillRequest.description}}</textarea>
         </dd>
         <dt><span data-translate="devladApp.skillRequest.status">Status</span></dt>
         <dd>

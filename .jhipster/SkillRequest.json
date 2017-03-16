@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "requestor",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "SkillRequestStatus",
+            "fieldValues": "REQUESTED,DELETED,INPROGRESS,PERFORMED",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170316155016",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "skill_request",
+    "pagination": "pagination"
+}

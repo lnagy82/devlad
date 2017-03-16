@@ -1,0 +1,11 @@
+{
+    "devladApp": {
+        "SkillRequestStatus" : {
+            "null": "",
+            "REQUESTED": "REQUESTED",
+            "DELETED": "DELETED",
+            "INPROGRESS": "INPROGRESS",
+            "PERFORMED": "PERFORMED"
+        }
+    }
+}

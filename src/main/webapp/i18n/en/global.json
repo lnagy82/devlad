@@ -19,6 +19,7 @@
                 "team": "Team",
                 "teamMember": "Team Member",
                 "news": "News",
+                "skillRequest": "Skill Request",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

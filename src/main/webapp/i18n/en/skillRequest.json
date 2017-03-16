@@ -1,0 +1,24 @@
+{
+    "devladApp": {
+        "skillRequest" : {
+            "home": {
+                "title": "Skill Requests",
+                "createLabel": "Create a new Skill Request",
+                "createOrEditLabel": "Create or edit a Skill Request"
+            },
+            "created": "A new Skill Request is created with identifier {{ param }}",
+            "updated": "A Skill Request is updated with identifier {{ param }}",
+            "deleted": "A Skill Request is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Skill Request {{ id }}?"
+            },
+            "detail": {
+                "title": "Skill Request"
+            },
+            "created": "Created",
+            "requestor": "Requestor",
+            "description": "Description",
+            "status": "Status"
+        }
+    }
+}

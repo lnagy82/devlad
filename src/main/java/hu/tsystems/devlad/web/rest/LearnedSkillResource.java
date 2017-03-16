@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import hu.tsystems.devlad.domain.LearnedSkill;
 import hu.tsystems.devlad.service.LearnedSkillService;
 import hu.tsystems.devlad.service.dto.LearnedSkillDTO;
+import hu.tsystems.devlad.service.dto.TutorDTO;
 import hu.tsystems.devlad.web.rest.util.HeaderUtil;
 import hu.tsystems.devlad.web.rest.util.PaginationUtil;
 import hu.tsystems.devlad.web.rest.util.ResponseUtil;
@@ -112,6 +113,23 @@ public class LearnedSkillResource {
         throws URISyntaxException {
         log.debug("REST request to get a page of LearnedSkills");
         Page<LearnedSkillDTO> page = learnedSkillService.findAllByDeveloper(pageable, developerId);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/learned-skills");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+    
+    /**
+     * GET  /learned-skills : get all the learnedSkills.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of learnedSkills in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping("/learned-skills/developer")
+    @Timed
+    public ResponseEntity<List<TutorDTO>> getLearnedSkillsByDeveloper(@ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of LearnedSkills");
+        Page<TutorDTO> page = learnedSkillService.findAllTutor(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/learned-skills");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

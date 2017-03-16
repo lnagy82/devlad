@@ -4,6 +4,7 @@ import hu.tsystems.devlad.domain.LearnedSkill;
 import hu.tsystems.devlad.repository.LearnedSkillRepository;
 import hu.tsystems.devlad.repository.LearnedSkillRepositoryCustom;
 import hu.tsystems.devlad.service.dto.LearnedSkillDTO;
+import hu.tsystems.devlad.service.dto.TutorDTO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -94,4 +95,8 @@ public class LearnedSkillService {
         log.debug("Request to delete LearnedSkill : {}", id);
         learnedSkillRepository.delete(id);
     }
+
+	public Page<TutorDTO> findAllTutor(Pageable pageable) {
+		return learnedSkillRepositoryCustom.findAllTutor(pageable);
+	}
 }
